@@ -19,6 +19,12 @@ jobs:
           cd apps
           make run-test
 
+        # dockleによるイメージ診断
+      - name: Run dockle
+        uses: hands-lab/dockle-action@v1
+        with:
+          image: docker.pkg.github.com/${{ github.repository }}/go-image:${{ github.run_number }}
+
         # BuildKitによるコンテナイメージビルド
       - name: Build an image from Dockerfile
         run: |
